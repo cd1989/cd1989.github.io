@@ -1,456 +1,592 @@
-/*!
- * Start Bootstrap - Freelancer Bootstrap Theme (http://startbootstrap.com)
- * Code licensed under the Apache License v2.0.
- * For details, see http://www.apache.org/licenses/LICENSE-2.0.
- */
+/* --------------------------------------
+-----   Reset   -----
+------------------------------------------*/
+
+html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}nav ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}a{margin:0;padding:0;font-size:100%;vertical-align:baseline;background:transparent}ins{background-color:#ff9;color:#000;text-decoration:none}mark{background-color:#ff9;color:#000;font-style:italic;font-weight:bold}del{text-decoration:line-through}abbr[title],dfn[title]{border-bottom:1px dotted;cursor:help}table{border-collapse:collapse;border-spacing:0}hr{display:block;height:1px;border:0;border-top:1px solid #ccc;margin:1em 0;padding:0}input,select{vertical-align:middle}.clearfix:before,.clearfix:after{content:" ";display:table;}.clearfix:after {clear:both;}html,body{overflow-x:hidden;}
+
+/* --------------------------------------
+-----   COLORS   -----
+------------------------------------------*/
+
+/* These rules are grouped based on color shades */
+
+/* Selection */
 
 body {
-    overflow-x: hidden;
+    height: 100vh;
 }
 
-p {
+::selection {
+    background: #FDF2E3;
+    color: #291A03;
+}
+::-moz-selection {
+    background: #FDF2E3;
+    color: #291A03;
+}
+
+/* Main text & navigation buttons */
+
+#main-title, #main-subtitle {
+    color: #FBE3C4;
+}
+#main-nav a, .button {
+    color: #FBE3C4;
+    border: 2px solid #FBE3C4;
+}
+
+#main-nav a:hover, #main-nav a.selected {
+    background: #FBE3C4;
+    color: #291A03;
+}
+
+/* Regular buttons & img captions */
+
+.button {
+    border-color: #B59A65;
+    color: #B59A65;
+}
+.button:hover {
+    border-color: #B59A65;
+    background: #B59A65;
+    color: #fff;
+}
+figcaption {
+    background: #B59A65;
+    background: rgba(181, 154, 101,.5);
+}
+
+/* Basic links */
+
+a:hover, #posts-list a:hover {
+    color: #D4A16B;
+    border-color: #D4A16B;
+}
+
+/* --------------------------------------
+-----   TYPOGRAPHY   -----
+------------------------------------------*/
+
+/* Font families are groupped here - individual styles are below */
+
+body, #posts-list h3 {
+    font-family: 'Fenix', Georgia, serif;
+}
+h1, h2, h3, h4, h5, h6, .section-subtitle, #main-nav a, .button, figcaption, #posts-list time, .main-footer, .projects-list span {
+    font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+}
+#main-title, #main-subtitle {
+    font-family: 'Playfair Display', Georgia, serif;
+}
+
+/* Basic typographic elements */
+
+body {
     font-size: 20px;
+    line-height: 30px;
+    color: #222;
+}
+a {
+    text-decoration: none;
+    color: #ccc;
+    border-bottom: 1px dotted #ccc;
+}
+p {
+    margin: 40px 0;
+}
+ul {
+    list-style: square inside;
+    margin: 20px 0;
+}
+ol {
+    list-style: decimal-leading-zero inside;
+    margin: 20px 0;
 }
 
-p.small {
+pre {
+    background: none repeat scroll 0 0 #F7F7F7;
+    border: 5px solid #E9E9E9;
+    font-family: Consolas, Courier, Monaco, monospace;
+    font-size: 12px;
+    line-height: 19px;
+    overflow-x: auto;
+    padding: 20px;
+}
+
+table {
+   width: 100%;
+   border: 1px solid #e9e9e9;
+   text-align: left;
+}
+table thead h4 {
+   font-size: 10px;
+   line-height: 18px;
+   text-transform: uppercase;
+   margin-bottom: 0;
+}
+table tr {
+   border-top: 1px solid #e9e9e9;
+}
+table thead tr {
+   border-top: none;
+}
+table th, table td {
+   min-height: 41px;
+   padding: 10px 14px 8px;
+   border-right: 1px solid #e9e9e9;
+}
+
+sub, sup {
+   font-size: .7em;
+   line-height: .7em;
+}
+sub {
+   vertical-align: bottom;
+}
+sup {
+   vertical-align: top;
+}
+
+var {
+   font-family: Consolas, Courier, Monaco, monospace;
+}
+
+blockquote {
+   border-left: 3px solid #b3b3b3;
+   padding-left: 50px;
+   margin: 40px 0;
+}
+blockquote > p {
+   font-size: 24px;
+   line-height: 30px;
+   font-weight: 300;
+}
+blockquote cite {
+   color: #999999;
+   display: inline-block;
+   font-size: 20px;
+   font-style: italic;
+   margin: 25px 0 15px;
+}
+q {
+   border-left: 3px solid #b3b3b3;
+   font-style: italic;
+   padding-left: 15px;
+}
+
+.post-content h3 {
     font-size: 16px;
+    line-height: 22px;
+    text-transform: uppercase; 
 }
 
-a,
-a:hover,
-a:focus,
-a:active,
-a.active {
-    outline: 0;
-    color: #{{ site.color.primary }};
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h4 {
+    font-size: 14px;
+    margin: 25px 0 10px;
     text-transform: uppercase;
-    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    color: #666;
+}
+h4 + p {
+    margin-top: 0;
+}
+
+/* Main header */
+
+#main-title, #main-subtitle {
+    font-style: italic;
+    display: block;
+}
+#main-title {
+    font-size: 52px;
+    line-height: 52px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+#main-subtitle {
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 400;
+}
+
+/* Section titles */
+
+.section-header {
+    margin-bottom: 15px;
+}
+.section-title, h3.section-title {
+    font-size: 18px;
+    line-height: 24px;
+    color: #212121;
+    text-transform: uppercase;
     font-weight: 700;
 }
-
-hr.star-light,
-hr.star-primary {
-    margin: 25px auto 30px;
-    padding: 0;
-    max-width: 250px;
-    border: 0;
-    border-top: solid 5px;
-    text-align: center;
+.section-subtitle {
+    font-size: 12px;
+    line-height: 18px;
+    color: #ccc;
+    text-transform: uppercase;
+    font-weight: 700;
+    display: block;
+    margin-top: 5px;
 }
 
-hr.star-light:after,
-hr.star-primary:after {
-    content: "\f005";
+/* --------------------------------------
+-----   STRUCTURE   -----
+------------------------------------------*/
+
+/* Typographic elements or colors will appear in this section as well */
+
+/* ---------------------
+-----   Navigation   -----
+-------------------------*/
+
+.main-header {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-image: url(../img/bg.jpg); /* main bg image */
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: table;
+}
+
+#main-nav {
+    margin-top: 35px;
+}
+#main-nav a, .button {
+    font-size: 14px;
+    line-height: 14px;
+    padding: 12px 24px 11px;
     display: inline-block;
-    position: relative;
-    top: -.8em;
-    padding: 0 .25em;
-    font-family: FontAwesome;
-    font-size: 2em;
-}
-
-hr.star-light {
-    border-color: #fff;
-}
-
-hr.star-light:after {
-    color: #fff;
-    background-color: #{{ site.color.primary }};
-}
-
-hr.star-primary {
-    border-color: #{{ site.color.secondary }};
-}
-
-hr.star-primary:after {
-    color: #{{ site.color.secondary }};
-    background-color: #fff;
-}
-
-.img-centered {
-    margin: 0 auto;
-}
-
-header {
-    text-align: center;
-    color: #fff;
-    background: #{{ site.color.primary }};
-}
-
-header .container {
-    padding-top: 100px;
-    padding-bottom: 50px;
-}
-
-header img {
-    display: block;
-    margin: 0 auto 20px;
-}
-
-header .intro-text .name {
-    display: block;
+    margin: 7px;
     text-transform: uppercase;
-    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: 2em;
-    font-weight: 700;
 }
 
-header .intro-text .skills {
-    font-size: 1.25em;
-    font-weight: 300;
+/* Button (can be used in any other context ) */
+
+.button {
+    margin: 0 7px 0 0;
 }
 
-@media(min-width:768px) {
-    header .container {
-        padding-top: 200px;
-        padding-bottom: 100px;
-    }
+/*----------------------
+-----   Homepage "header"   -----
+-------------------------*/
 
-    header .intro-text .name {
-        font-size: 4.75em;
-    }
-
-    header .intro-text .skills {
-        font-size: 1.75em;
-    }
+.main-header.home {
+    position: fixed;
+    height: 100%;
 }
-
-@media(min-width:768px) {
-    .navbar-fixed-top {
-        padding: 25px 0;
-        -webkit-transition: padding .3s;
-        -moz-transition: padding .3s;
-        transition: padding .3s;
-    }
-
-    .navbar-fixed-top .navbar-brand {
-        font-size: 2em;
-        -webkit-transition: all .3s;
-        -moz-transition: all .3s;
-        transition: all .3s;
-    }
-
-    .navbar-fixed-top.navbar-shrink {
-        padding: 10px 0;
-    }
-
-    .navbar-fixed-top.navbar-shrink .navbar-brand {
-        font-size: 1.5em;
-    }
-}
-
-.navbar {
-    text-transform: uppercase;
-    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-weight: 700;
-}
-
-.navbar a:focus {
-    outline: 0;
-}
-
-.navbar .navbar-nav {
-    letter-spacing: 1px;
-}
-
-.navbar .navbar-nav li a:focus {
-    outline: 0;
-}
-
-.navbar-default,
-.navbar-inverse {
-    border: 0;
-}
-
-section {
-    padding: 100px 0;
-}
-
-section h2 {
-    margin: 0;
-    font-size: 3em;
-}
-
-section.success {
-    color: #fff;
-    background: #{{ site.color.primary }};
-}
-
-@media(max-width:767px) {
-    section {
-        padding: 75px 0;
-    }
-
-    section.first {
-        padding-top: 75px;
-    }
-}
-
-#portfolio .portfolio-item {
-    right: 0;
-    margin: 0 0 15px;
-}
-
-#portfolio .portfolio-item .portfolio-link {
-    display: block;
+.vertical-container {
+    background: rgba(34, 34, 34, .6);
     position: relative;
-    margin: 0 auto;
-    max-width: 400px;
-}
-
-#portfolio .portfolio-item .portfolio-link .caption {
-    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    opacity: 0;
-    background: rgba({{ site.color.primary-rgb }},.9);
-    -webkit-transition: all ease .5s;
-    -moz-transition: all ease .5s;
-    transition: all ease .5s;
-}
-
-#portfolio .portfolio-item .portfolio-link .caption:hover {
-    opacity: 1;
-}
-
-#portfolio .portfolio-item .portfolio-link .caption .caption-content {
-    position: absolute;
-    top: 50%;
-    width: 100%;
-    height: 20px;
-    margin-top: -12px;
-    text-align: center;
-    font-size: 20px;
-    color: #fff;
-}
-
-#portfolio .portfolio-item .portfolio-link .caption .caption-content i {
-    margin-top: -12px;
-}
-
-#portfolio .portfolio-item .portfolio-link .caption .caption-content h3,
-#portfolio .portfolio-item .portfolio-link .caption .caption-content h4 {
-    margin: 0;
-}
-
-#portfolio * {
-    z-index: 2;
-}
-
-@media(min-width:767px) {
-    #portfolio .portfolio-item {
-        margin: 0 0 30px;
-    }
-}
-
-.btn-outline {
-    margin-top: 15px;
-    border: solid 2px #fff;
-    font-size: 20px;
-    color: #fff;
-    background: 0 0;
-    transition: all .3s ease-in-out;
-}
-
-.btn-outline:hover,
-.btn-outline:focus,
-.btn-outline:active,
-.btn-outline.active {
-    border: solid 2px #fff;
-    color: #{{ site.color.primary }};
-    background: #fff;
-}
-
-.floating-label-form-group {
-    position: relative;
-    margin-bottom: 0;
-    padding-bottom: .5em;
-    border-bottom: 1px solid #eee;
-}
-
-.floating-label-form-group input,
-.floating-label-form-group textarea {
-    z-index: 1;
-    position: relative;
-    padding-right: 0;
-    padding-left: 0;
-    border: 0;
-    border-radius: 0;
-    font-size: 1.5em;
-    background: 0 0;
-    box-shadow: none!important;
-    resize: none;
-}
-
-.floating-label-form-group label {
-    display: block;
-    z-index: 0;
-    position: relative;
-    top: 2em;
-    margin: 0;
-    font-size: .85em;
-    line-height: 1.764705882em;
+    display: table-cell;
     vertical-align: middle;
-    vertical-align: baseline;
-    opacity: 0;
-    -webkit-transition: top .3s ease,opacity .3s ease;
-    -moz-transition: top .3s ease,opacity .3s ease;
-    -ms-transition: top .3s ease,opacity .3s ease;
-    transition: top .3s ease,opacity .3s ease;
+    text-align: center;
 }
 
-.floating-label-form-group::not(:first-child) {
-    padding-left: 14px;
-    border-left: 1px solid #eee;
+/* ---------------------
+-----   Regular header   -----
+-------------------------*/
+
+.main-header.regular {
+    height: 250px;
+}
+.main-header.regular #main-title {
+    margin-bottom: 10px;
+}
+.main-header.regular .vertical-container {
+    text-align: left;
+}
+.main-header.regular #main-nav {
+    float: right;
+    margin-top: 25px;
+}
+.main-header.regular header {
+    float: left;
 }
 
-.floating-label-form-group-with-value label {
-    top: 0;
-    opacity: 1;
+/* ---------------------
+-----   Content structure   -----
+-------------------------*/
+
+.wrapper {
+    max-width: 1040px;
+    margin: auto;
+    padding: 0 50px;
+}
+.main-content .wrapper {
+    margin: 100px auto 150px;
 }
 
-.floating-label-form-group-with-focus label {
-    color: #{{ site.color.primary }};
+.page-wrap {
+    min-height: 100%;
+    background-color: #eee;
+}
+.page-wrap:after {
+    content: "";
+    display: block;
+    height: 120px; /* footer heigth */
 }
 
-form .row:first-child .floating-label-form-group {
-    border-top: 1px solid #eee;
+.page-content {
+    margin-top: 50px;
+}
+.main-content .page-content:first-child {
+    margin-top: 0;
 }
 
-footer {
+.one-half {
+    width: 45%;
+}
+.one-half.first {
+    float: left;
+}
+.one-half.last {
+    float: right;
+}
+
+/* --------------------------------------
+-----   BLOG   -----
+------------------------------------------*/
+
+#posts-list {
+    margin-top: 35px;
+}
+#posts-list li {
+    border-top: 1px solid #e9e9e9;
+    display: block;
+}
+#posts-list li:first-child {
+    border-top: none;
+}
+#posts-list time {
+    font-size: 12px;
+    line-height: 12px;
+    color: #ccc;
+    width: 115px;
+    text-transform: uppercase;
+    float: left;
+    padding-top: 26px;
+}
+#posts-list time:after {
+    display: block;
+    content: "";
+    width: 5px;
+    height: 5px;
+    background: #ccc;
+    float: right;
+    margin: 3px 15px 0 0;
+}
+#posts-list a {
+    color: #222;
+    float: left;
+    padding: 16px 0 13px;
+    border: none;
+}
+#posts-list h3 {
+    font-weight: 400;
+}
+
+.post-nav {
+    margin-top: 70px;
+}
+
+/* ---------------------
+-----   List   -----
+-------------------------*/
+
+/* --------------------------------------
+-----   FOOTER   -----
+------------------------------------------*/
+
+.main-footer {
+    background: #323538;
+    display: table;
+    position: relative;
+    width: 100%;
+    height: 120px;
+}
+.main-footer .vertical-container {
+    text-align: left;
+    background: transparent;
+}
+.main-footer {
+    font-size: 12px;
+    text-transform: uppercase;
+    line-height: 12px;
+    color: #fff;
+}
+.copy {
+    float: left;
+    margin: 0;
+}
+.social {
+    margin: 0;
+    float: right;
+}
+.social li {
+    list-style: none;
+    display: inline;
+    margin: 0 10px;
+}
+.social li:last-child {
+    margin-right: 0;
+}
+.social a {
+    border: transparent;
     color: #fff;
 }
 
-footer h3 {
-    margin-bottom: 30px;
-}
+/* --------------------------------------
+-----   OTHER   -----
+------------------------------------------*/
 
-footer .footer-above {
-    padding-top: 50px;
-    background-color: #{{ site.color.secondary }};
-}
+/* ---------------------
+-----   Figures   -----
+-------------------------*/
 
-footer .footer-col {
-    margin-bottom: 50px;
+img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: bottom;
 }
-
-footer .footer-below {
-    padding: 25px 0;
-    background-color: #{{ site.color.secondary-dark }};
+iframe {
+    max-width: 100%;
 }
-
-.btn-social {
-    display: inline-block;
-    width: 50px;
-    height: 50px;
-    border: 2px solid #fff;
-    border-radius: 100%;
-    text-align: center;
-    font-size: 20px;
-    line-height: 45px;
+figure {
+    position: relative;
+    margin: 40px 0;
 }
-
-.btn:focus,
-.btn:active,
-.btn.active {
-    outline: 0;
-}
-
-.scroll-top {
-    z-index: 1049;
-    position: fixed;
-    right: 2%;
-    bottom: 2%;
-    width: 50px;
-    height: 50px;
-}
-
-.scroll-top .btn {
-    width: 50px;
-    height: 50px;
-    border-radius: 100%;
-    font-size: 20px;
-    line-height: 28px;
-}
-
-.scroll-top .btn:focus {
-    outline: 0;
-}
-
-.portfolio-modal .modal-content {
-    padding: 100px 0;
-    min-height: 100%;
-    border: 0;
-    border-radius: 0;
-    text-align: center;
-    background-clip: border-box;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-}
-
-.portfolio-modal .modal-content h2 {
-    margin: 0;
-    font-size: 3em;
-}
-
-.portfolio-modal .modal-content img {
-    margin-bottom: 30px;
-}
-
-.portfolio-modal .modal-content .item-details {
-    margin: 30px 0;
-}
-
-.portfolio-modal .close-modal {
+figcaption {
+    bottom: 10px;
+    color: #fff;
+    font-size: 12px;
+    line-height: 12px;
+    padding: 13px 16px 11px;
     position: absolute;
-    top: 25px;
-    right: 25px;
-    width: 75px;
-    height: 75px;
-    background-color: transparent;
-    cursor: pointer;
+    right: 10px;
+    text-transform: uppercase;
 }
 
-.portfolio-modal .close-modal:hover {
-    opacity: .3;
+/* ---------------------
+-----   Projects   -----
+-------------------------*/
+
+.projects-list {
+    margin-top: 30px;
+    margin-left: -20px;
+    width: 110%;
+}
+.projects-list li {
+    float: left;
+    margin: 20px;
+    list-style: none;
+}
+.projects-list a {
+    position: relative;
+    display: inline-block;
+    color: #fff;
+    border: none;
+}
+.projects-list .caption {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #333;
+    background: rgba(34, 34, 34, .6);
+    opacity: 0;
+}
+.projects-list .caption > div {
+    position: absolute;
+    bottom: 10px;
+    left: 15px;
+}
+.projects-list h4 {
+    font-size: 18px;
+    line-height: 18px;
+    color: #fff;
+    margin: 0 0 -5px 0;
+    font-weight: 400;
+}
+.projects-list span {
+    font-size: 12px;
+    line-height: 12px;
+    color: #ccc;
+    text-transform: uppercase;
+    font-weight: 400;
 }
 
-.portfolio-modal .close-modal .lr {
-    z-index: 1051;
-    width: 1px;
-    height: 75px;
-    margin-left: 35px;
-    background-color: #{{ site.color.secondary }};
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
+.projects-list a:hover {
+    box-shadow: 6px 5px 0 0 #ccc;
+}
+.projects-list a:hover .caption {
+    opacity: 1;
 }
 
-.portfolio-modal .close-modal .lr .rl {
-    z-index: 1052;
-    width: 1px;
-    height: 75px;
-    background-color: #{{ site.color.secondary }};
-    -webkit-transform: rotate(90deg);
-    -ms-transform: rotate(90deg);
-    transform: rotate(90deg);
+/* ---------------------
+-----   Animations   -----
+-------------------------*/
+
+a, #posts-list li, #posts-list time, .projects-list .caption {
+    -webkit-transition: all 150ms linear;
+    transition: all 150ms linear;
 }
 
-.navbar-nav>.active>a {
-    background-color: #{{ site.color.secondary-dark }} !important;
+/* ---------------------
+-----   A bit of responsiveness   -----
+-------------------------*/
+
+@media all and (max-width: 840px) {
+
+    .main-header.regular {
+        height: auto;
+    }
+    .main-header.regular .vertical-container {
+        padding: 38px 0;
+    }
+    .main-header.regular .vertical-container, .main-footer .vertical-container {
+        text-align: center;
+    }
+    .main-header.regular header, .main-header.regular #main-nav, .copy, .social {
+        float: none;
+    }
+    .wrapper {
+        padding: 0 25px;
+    }
+    .copy {
+        margin: 10px;
+    }
+    .one-half {
+        width: 100%;
+    }
+    #posts-list time {
+        display: none;
+    }
+
 }
 
-/* Fix modal mouse wheel issues */
-/* https://github.com/twbs/bootstrap/issues/16297 */
-.modal.fade.in {
-    transform: translateZ(0);
-    -webkit-transform: translateZ(0);
+/* If you're using a "wacky" portfolio grid, it should be fixed when the
+        browser resizes below 1040px */
+
+@media all and (max-width: 1140px) {
+
+    .projects-list {
+        width: 100%;
+        margin-left: 0;
+    }
+    .projects-list li, .projects-list a {
+        float: none;
+        max-width: 100%;
+    }
+    .projects-list li {
+        margin: 20px 0 0 0 !important;
+    }
+
 }

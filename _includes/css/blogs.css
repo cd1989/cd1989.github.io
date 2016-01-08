@@ -52,7 +52,7 @@ a {
 	color: #{{ site.color.primary-light }} !important;
 }
 
-p {
+.blog p {
 	font-size: 18px;
 	color: #{{ site.color.primary }};
 }

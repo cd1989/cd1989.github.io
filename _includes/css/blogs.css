@@ -27,3 +27,28 @@ a {
   	border: 1px solid #E9E9E9;
   	margin-bottom: 20px;
 }
+
+.blog-meta span {
+	color: #c1c0c0;
+  	line-height: 18px;
+  	margin-right: 30px;
+  	font-size: 14px !important;
+  	float: left;
+}
+
+.blog-meta span a {
+	margin-top: 0px !important;
+  	float: left;
+    font-size: 14px;
+	line-height: 17px !important;
+}
+
+.blog-meta span i {
+	float: left;
+	margin-top: 3px;
+  	margin-right: 10px;
+}
+
+.blog-meta span a, .blog-meta span i {
+	color: #c1c0c0 !important;
+}

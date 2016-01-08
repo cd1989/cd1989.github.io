@@ -53,6 +53,7 @@ a {
 }
 
 p {
+	font-size: 18px;
 	color: #{{ site.color.primary }};
 }
 

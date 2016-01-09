@@ -5,11 +5,17 @@
 .blog-header {
     width: 100%;
   	text-align: left;
-  	margin-bottom: 16px;
-  	line-height: 100%;
+  	margin-bottom: 30px;
+    line-height: 100%;
   	margin-top: -7px;
   	font-size: 24px;
-	 font-weight: bold;
+	  font-weight: bold;
+}
+
+.blogs .blog-header {
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px dashed #{{ site.color.accents }};
 }
 
 a {
@@ -24,7 +30,6 @@ a {
 }
 
 .blogs .blog {
-    border-bottom: 1px dashed #{{ site.color.accents }};
     margin-bottom: 20px;
 }
 

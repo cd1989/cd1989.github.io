@@ -26,7 +26,7 @@ a {
 }
 
 .blogs .blog {
-    border: 1px solid #f0f0f0;
+    border-bottom: 1px dashed #{{ site.color.accents }};
     margin-bottom: 20px;
 }
 

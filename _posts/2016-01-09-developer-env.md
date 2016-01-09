@@ -20,7 +20,7 @@ create: 2016-01-09
 
 			<div class="main-content">
 				<p>工欲善其事，必先利其器。要成为一个有逼格的程序猿，一个高大上的工作环境是必不可少的。</p>
-				<div style="margin-top:10px; margin-bottom:10px; float: left; clear: both; width: 100%;" class="margin"></div>
+				<p>良好的工作环境不仅可以显得专业范儿，也能激发我们工作的热情。</p>
 			</div>
 		</div>
 	</div>

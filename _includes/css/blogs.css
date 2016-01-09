@@ -15,14 +15,14 @@
 a {
 	color: #{{ site.color.primary-dark }};
 	text-decoration: none;
-	border: 0!important;
+	border: none;
 }
 
 .blog {
   	padding-left: 50px;
   	padding-right: 50px;
   	padding-top: 45px;
-  	padding-bottom: 45px;
+  	padding-bottom: 15px;
 }
 
 .blogs .blog {

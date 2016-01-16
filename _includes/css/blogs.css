@@ -71,17 +71,40 @@ blockquote {
 	color: #{{ site.color.primary-light }} !important;
 }
 
+div.commands {
+		background: #f7f7f9;
+		border-left: 3px solid #c9c9c9;
+		padding: 5px 20px;
+}
+
 span.command {
 	font-family: "Source Code Pro",monospace;
 	display: block;
+	font-size: .9em;
+  color: #{{ site.color.primary }};
+	white-space: nowrap;
+  overflow-x: auto;
 }
 
-img.narrow {
+.command .op {
+	color: #c9c9c9;
+	margin-right: 7px;
+}
+
+img {
 	width: 80%;
 }
 
+p a {
+	color: #ad7301;
+}
+
+.blog h1, .blog h2, .blog h3 {
+	margin-top: 40px;
+}
+
 @media all and (max-width: 840px) {
-	img.narrow {
+	img {
 		width: 100%;
 	}
 }

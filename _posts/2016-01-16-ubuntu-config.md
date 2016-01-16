@@ -9,7 +9,7 @@ excerpt: <p>工欲善其事，必先利其器。一个舒适的开发环境不�
 <div class="blog-wrapper wrapper">
 	<div class="blog">
 		<div class="blog-content">
-			<h2 class="blog-header"><a href="#">程序员的修养——Ubuntu环境配置</a></h2>
+			<h2 class="blog-header"><a href="#">{{ page.title }}</a></h2>
 
 			<div class="blog-meta">
 				<span class="date-span"><i class="fa fa-lg fa-clock-o"></i><a href="#">{{ page.create }}</a></span>
@@ -34,26 +34,26 @@ excerpt: <p>工欲善其事，必先利其器。一个舒适的开发环境不�
 				<p>
 				首先安装其中的Numix-Circle Linux Desktop Icon Theme：
 
-				<blockquote>
-				<span class="command">sudo apt-add-repository ppa:numix/ppa</span>
-				<span class="command">sudo apt-get update</span>
-				<span class="command">sudo apt-get install numix-icon-theme-circle</span>
-				</blockquote>
+				<div class="commands">
+				<span class="command"><span class="op">&gt;</span>sudo apt-add-repository ppa:numix/ppa</span>
+				<span class="command"><span class="op">&gt;</span>sudo apt-get update</span>
+				<span class="command"><span class="op">&gt;</span>sudo apt-get install numix-icon-theme-circle</span>
+				</div>
 				</p>
 
 				<p>
 				再下载一个桌面壁纸：
-				<blockquote>
-				<span class="command">sudo apt-get install numix-wallpaper-aurora</span>
-				</blockquote>
+				<div class="commands">
+				<span class="command"><span class="op">&gt;</span>sudo apt-get install numix-wallpaper-aurora</span>
+				</div>
 				</p>
 
 				<p>
 				到目前位置主题和桌面已经安装完成，现在使用unity-tweak-tool进行配置，Ubuntu默认没有安装该工具，使用包管理工具进行安装并启动（也可通过Dash进行启动）：
-				<blockquote>
-				<span class="command">sudo apt-get install unity-tweak-tool</span>
-				<span class="command">unity-tweak-tool</span>
-				</blockquote>
+				<div class="commands">
+				<span class="command"><span class="op">&gt;</span>sudo apt-get install unity-tweak-tool</span>
+				<span class="command"><span class="op">&gt;</span>unity-tweak-tool</span>
+				</div>
 				</p>
 
 				<p>启动后进入如下管理工具，在其中对Appearance &gt; Theme和Appearance &gt; Icons进行配置，选择刚才安装的Numix主题。再设置顶部Menubar的透明度，通过Unity &gt; Panel进行配置</p>
@@ -63,15 +63,13 @@ excerpt: <p>工欲善其事，必先利其器。一个舒适的开发环境不�
 				<img src="/img/b1/4.png"/>
 
 				<p>现在来给顶部的menubar添加几个插件，即Indicator Applets，这里只安装my-weather-indicator和indicator-multiload，需要其他的indicator可以继续添加。
-				<blockquote>
-				<span class="command">sudo add-apt-repository ppa:atareao/atareao</span>
-				<span class="command">sudo apt-get update</span>
-				<span class="command">sudo apt-get install my-weather-indicator</span>
-				</blockquote>
+				<div class="commands">
+				<span class="command"><span class="op">&gt;</span>sudo add-apt-repository ppa:atareao/atareao</span>
+				<span class="command"><span class="op">&gt;</span>sudo apt-get update</span>
+				<span class="command"><span class="op">&gt;</span>sudo apt-get install my-weather-indicator</span>
+				<span class="command"><span class="op">&gt;</span>sudo apt-get install indicator-multiload</span>
+				</div>
 
-				<blockquote>
-				<span class="command">sudo apt-get install indicator-multiload</span>
-				</blockquote>
 				</p>
 
 				<img src="/img/b1/5.png"/>
@@ -95,25 +93,23 @@ excerpt: <p>工欲善其事，必先利其器。一个舒适的开发环境不�
 				<h2>终端配置</h2>
 
 				<p>你的终端是不是这样的：</p>
-				<img class="narrow" src="/img/b1/6.png"/>
+				<img src="/img/b1/6.png"/>
 				<p>而别人的终端却是这样的：</p>
-				<img class="narrow" src="/img/b1/7.png"/>
+				<img src="/img/b1/7.png"/>
 				<p>现在我们来对终端进行配置：</p>
 
 				<h3>Zsh, Oh-My-Zsh</h3>
 				<p>你是否还在用系统默认的bash，但是大牛们用的却是zsh。至于为什么用zsh，可以自行进行google，zsh的有点至少包括：更强的自动不全、优化的模式识别、全面可定制。通过如下命令来安装zsh并修改默认的shell，其中对shell的更改需要注销重新登录后才能生效。</p>
 
-				<p>
-				<blockquote>
-				<span class="command">sudo apt-get install zsh</span>
-				<span class="command">chsh -s $(which zsh)</span>
-				</blockquote>
-				</p>
+				<div class="commands">
+				<span class="command"><span class="op">&gt;</span>sudo apt-get install zsh</span>
+				<span class="command"><span class="op">&gt;</span>chsh -s $(which zsh)</span>
+				</div>
 
 				<p>Oh-My-Zsh是一个用来管理zsh配置的开源框架，它包含了丰富的主题、功能、插件和一些你意想不到的东西。安装起来也相当简单：
-				<blockquote>
-				<span class="command">sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"</span>
-				</blockquote>
+				<div class="commands">
+				<span class="command"><span class="op">&gt;</span>sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"</span>
+				</div>
 				</p>
 
 				<p>安装好zsh和Oh-My-Zsh后，我们可以通过~/.zshrc来对zsh进行配置，例如主题和插件配置。具体的配置可以借助于google或github。</p>
@@ -123,10 +119,10 @@ excerpt: <p>工欲善其事，必先利其器。一个舒适的开发环境不�
 				<p>还在苦于打开多个终端，在终端中来回切换吗，终端的分屏复用可以帮助你，而<a href="https://tmux.github.io/">tmux</a>就是其中的杰出代表。它的安装和使用也非常简单：</p>
 
 				<p>
-				<blockquote>
-				<span class="command">sudo apt-get install tmux</span>
-				<span class="command">tmux</span>
-				</blockquote>
+				<div class="commands">
+				<span class="command"><span class="op">&gt;</span>sudo apt-get install tmux</span>
+				<span class="command"><span class="op">&gt;</span>tmux</span>
+				</div>
 				</p>
 
 				<h2>Vim配置</h2>

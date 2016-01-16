@@ -70,3 +70,18 @@ a {
 blockquote {
 	color: #{{ site.color.primary-light }} !important;
 }
+
+span.command {
+	font-family: "Source Code Pro",monospace;
+	display: block;
+}
+
+img.narrow {
+	width: 80%;
+}
+
+@media all and (max-width: 840px) {
+	img.narrow {
+		width: 100%;
+	}
+}

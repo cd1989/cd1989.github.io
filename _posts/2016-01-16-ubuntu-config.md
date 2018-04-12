@@ -3,7 +3,7 @@ layout: default
 author: xfoolish
 create: 2016-01-16
 title: 程序员的自我修养——Ubuntu环境配置
-excerpt: <p>工欲善其事，必先利其器。一个舒适的开发环境不仅可以显得专业有逼格，还能大大提高我们码代码的热情。</p> <p>因此，对开发环境的配置是一个装逼的程序员的自我修养。</p>
+excerpt: <p>工欲善其事，必先利其器。一个舒适的开发环境不仅可以显得专业有逼格，还能大大提高我们码代码的热情。</p>
 ---
 
 <div class="blog-wrapper wrapper">

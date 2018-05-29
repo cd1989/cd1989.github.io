@@ -1,32 +1,25 @@
-## What's It
+## Dylan's Blog
 
-Personal blog engined by `Jekyll`.
+Personal blog powered by Jekyll. And themed by [huxblog-boilerplate](http://huangxuan.me/huxblog-boilerplate/)
 
 ## Quick Start
 
 Install Jekyll and Bundler gems through RubyGems
 
-> gem install jekyll bundler
+```bash
+$ gem install jekyll jekyll-paginate
+```
 
-Clone code
-> git@github.com:cd1989/cd1989.github.io.git
+Clone code 
 
-Build the site on the preview server
+```bash
+$ git clone git@github.com:cd1989/cd1989.github.io.git
+```
 
-> bundle exec jekyll serve --port 8080
+Build the site on preview server
 
-Now browse to http://localhost:8080
+```bash
+jekyll serve --port 8080 --watch
+```
 
-Please refer to [Jekyll Docs](https://jekyllrb.com/docs/home/) for more details.
-
-## Theme
-
-By default, gem-based theme `Minima` is used. If want to customize it, please override corresponding files in the theme.
-
-To get the theme files, use `bundle show minima`
-
-For example, if you want to change the footer layout:
-
-- create `_includes` folder in the root directory
-- copy `_incluses/footer.html` in minima to the above folder
-- edit it
+Now browse to `http://localhost:8080`

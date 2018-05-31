@@ -46,7 +46,6 @@ redis-server /etc/redis/redis.conf --daemonize yes
 
 # Start keepalived
 echo "starting keepalived..."
-echo 1 > /proc/sys/net/ipv4/ip_nonlocal_bind
 service keepalived start
 
 # Start sentinel
@@ -193,6 +192,8 @@ de439334a892        redis-ha:1.0        "./run.sh"               43 seconds ago 
 51fab8769568        redis-ha:1.0        "./run.sh"               43 seconds ago      Up 47 seconds                                  slave1
 722a58195b3c        redis-ha:1.0        "./run.sh"               43 seconds ago      Up 47 seconds                                  slave2
 ```
+
+_注意：由于我们直接将配置文件Mount到容器中使用，Redis和Sentinel在运行过程中会修改配置文件的内容，所以建议将配置文件复制保留一份，每次运行都使用未被修改的配置文件，否则第二次运行将会出错。_
 
 # 验证
 

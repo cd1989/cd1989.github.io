@@ -179,9 +179,6 @@ networks:
     external: false
 ```
 
-```
-$ docker-compose up -d
-```
 ```bash
 $ docker-compose up -d
 Creating slave2 ... done
@@ -197,7 +194,7 @@ _注意：由于我们直接将配置文件Mount到容器中使用，Redis和Sen
 
 # 验证
 
-_注意：我们只是选择性地显示了部分输出_
+_注意：这里我们只选择性地显示了部分输出_
 
 ### 集群状态
 

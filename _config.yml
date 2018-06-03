@@ -9,13 +9,12 @@ url: ""
 baseurl: ""
 
 
-
 # SNS settings
 RSS: false
-weibo_username:     xfoolish
-zhihu_username:     陈德
-github_username:    cd1989
-facebook_username:  xfoolish
+#weibo_username:     xfoolish
+#zhihu_username:     陈德
+#github_username:    cd1989
+#facebook_username:  xfoolish
 
 
 

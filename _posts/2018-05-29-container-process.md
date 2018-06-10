@@ -120,6 +120,158 @@ $ docker run busybox-shell
 /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 ```
 
-## 容器内信号处理
+## 容器内进程优雅退出
 
-作为init进程，它需要有基本的进程管理能力，正确处理某些系统信号，如SIGTERM，SIGINT。
+启动进程作为容器的init进程，它需要有基本的进程管理能力，正确处理某些系统信号，如SIGTERM，SIGINT，这样才能保证进程能够优雅地退出。在多进程的场景下，这点尤其重要。
+
+例如，假设我们以exec模式启动以下的脚本作为容器的启动进程，
+
+```bash
+#!/bin/bash
+
+/app &
+
+wait $!
+```
+
+这里，为了演示方便，我们采用如下的脚本作为app，它能够捕捉SIGTERM，SIGINT信号，并且打印`Goodbye, App`消息。
+
+```bash
+#!/bin/bash
+
+trap 'echo "Goodbye, App"; exit' TERM INT
+
+sleep 500 &
+
+wait $!
+```
+
+我们将得到两个进程：
+
+- 运行脚本的shell进程
+- app后台进程（其实该进程也包含一个子进程sleep 500）
+
+其中shell进程是容器的init进程，由于它没有信号处理的逻辑，根据前面对init进程的描述，当我们企图停止这个容器（docker stop），shell进程将忽略收到的SIGTERM信号，这时作为子进程的app将无法收到该SIGTERM信号，因而无法执行必要的清理工作以优雅退出。当我们执行docker stop的时候，我们可以发现，容器最终是在等待10s后被Docker Daemon强制关闭，而不是优雅退出。
+
+为了让进程app优雅退出，在上述例子中，最简答的办法就是使app成为init进程，这样它就能收到SIGTERM等信号。
+
+```bash
+#!/bin/bash
+
+exec app
+```
+
+通过exec来执行app，将使得app进程替代当前的shell进程，所以最终只会存在一个app进程。这时，如果我们通过docker stop停止容器，将会看到如下输出并且容器立刻退出。
+
+```
+Goodbye, App
+```
+
+但是，如果容器内需要启动多个进程，上述方法将无能为力，这时我们需要通过`trap`来给启动脚本增加信号处理能力。
+
+```bash
+#!/bin/bash
+
+/background-app &
+
+exec /app
+```
+
+### 通过脚本管理多进程
+
+_Dockerfile_
+```Dockerfile
+FROM debian:9.4
+
+COPY ./graceful.sh /home
+COPY ./app1.sh /home
+COPY ./app2.sh /home
+
+WORKDIR "/home"
+
+CMD [ "./graceful.sh" ]
+```
+
+_graceful.sh_
+```bash
+#!/bin/sh
+
+trap 'echo "Goodbye, Init"; kill -TERM $PID1 $PID2' TERM INT
+
+/home/app1.sh &
+PID1=$!
+
+/home/app2.sh &
+PID2=$!
+
+wait $PID1
+wait $PID2
+
+EXIT_STATUS=$?
+```
+
+_app1.sh_
+```bash
+#!/bin/sh
+
+trap 'echo "Goodbye, APP1"; kill $PID' INT TERM
+
+echo "APP1 running"
+
+sleep 500 &
+PID=$!
+
+wait $PID
+```
+
+_app2.sh_
+
+```bash
+#!/bin/sh
+
+trap 'echo "Goodbye, APP2"; kill $PID' INT TERM
+
+echo "APP2 running"
+
+sleep 500 &
+PID=$!
+
+wait $PID
+```
+
+在graceful.sh中，我们通过trap捕捉到了SIGTERM，SIGINT信号，并且在收到信号后通过kill将SIGTERM信号传递给子进程app1，app2。
+
+当运行上述容器时，
+
+```bash
+$ docker run graceful
+APP1 running
+APP2 running
+```
+
+而当我们通过docker stop停止容器时，
+
+```bash
+$ docker run graceful
+APP1 running
+APP2 running
+Goodbye, Init
+Goodbye, APP2
+Goodbye, APP1
+```
+
+可以看到，app1，app2两个子进程均实现了优雅地退出。
+
+在使用`trap`的时候，有一点需要尤其注意，
+
+> When Bash receives a signal for which a trap has been set while waiting for a command to complete, the trap will not be executed until the command completes.
+
+当Bash正在等待一个执行中的命令时，如果这时收到一个设置了trap的信号，在这个命令执行结束前trap不会被执行。这也是为什么之前的所有脚本中，进程都在后台运行（通过`&`），然后通过`wait`等待执行结束。
+
+_**Refs:**_
+
+- http://veithen.github.io/2014/11/16/sigterm-propagation.html
+
+### 通过Supervisor管理多进程
+
+Supervisor是一个方便的进程管理工具，通过它我们能够方便地在容器内启动多个进程，并且进程良好的管理。

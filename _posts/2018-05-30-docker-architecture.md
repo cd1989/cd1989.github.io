@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Docker架构演进之路"
+title:      "Docker架构"
 subtitle:   ""
 date:       2018-05-30
 author:     "Dylan Chen"

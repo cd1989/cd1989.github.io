@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "你真的懂 Git 吗"
+title: "Git 内部原理解析"
 subtitle: ""
 date: 2019-05-20
 author: "Dylan Chen"

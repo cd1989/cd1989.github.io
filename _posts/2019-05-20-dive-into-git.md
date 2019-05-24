@@ -4,7 +4,7 @@ title: "Git 内部原理解析"
 subtitle: ""
 date: 2019-05-20
 author: "Dylan Chen"
-header-img: "img/post-bg-unix-linux.jpg"
+header-img: "img/tag-bg.jpg"
 tags:
   - Git
 published: true
